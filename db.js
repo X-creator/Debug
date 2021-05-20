@@ -5,7 +5,7 @@ const {DB, DB_USER, DB_HOST, DB_PASSWORD} = process.env;
 const sequelize = new Sequelize(DB, DB_USER, DB_PASSWORD, {
     host: DB_HOST,
     dialect: 'postgres'
-})
+});
 
 sequelize.authenticate().then(
     function success() {
@@ -15,6 +15,6 @@ sequelize.authenticate().then(
     function fail(err) {
         console.log(`Error: ${err}`);
     }
-)
+);
 
 module.exports = sequelize;
