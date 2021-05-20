@@ -17,14 +17,14 @@ router.post('/signup', (req, res) => {
                 res.status(200).json({
                     user: user,
                     token: token
-                })
+                });
             },
 
             function signupFail(err) {
-                res.status(500).send(err.message)
+                res.status(500).send(err.message);
             }
         )
-})
+});
 
 router.post('/signin', (req, res) => {
     User.findOne({ where: { username: req.body.user.username } }).then(user => {
@@ -38,14 +38,14 @@ router.post('/signin', (req, res) => {
                         sessionToken: token
                     });
                 } else {
-                    res.status(502).send({ error: "Passwords do not match." })
+                    res.status(502).send({ error: "Passwords do not match." });
                 }
             });
         } else {
-            res.status(403).send({ error: "User not found." })
+            res.status(403).send({ error: "User not found." });
         }
 
     })
-})
+});
 
 module.exports = router;
